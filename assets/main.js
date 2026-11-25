@@ -1,6 +1,7 @@
 /* EDIT THESE. whatsapp = country code + number, digits only. Leave telegram, address or hours empty to hide them. */
 const CONFIG = {
   web3formsKey: "8d2ced08-2d99-4faf-b8d0-853262255d47", // Web3Forms form "Oxygen Lounge Reservations" -> oxygenloungezone@gmail.com
+  sheetUrl: "", // Google Apps Script web app URL (see google-sheet/Code.gs); empty = off
   name: "Oxygen Lounge",
   whatsapp: "15137130707",
   phoneDisplay: "(513) 713-0707",
@@ -102,6 +103,11 @@ $("bookForm").addEventListener("submit", async (ev) => {
       Notes: $("notes").value.trim() || "-",
       botcheck: $("bookForm").botcheck.checked
     };
+    if (CONFIG.sheetUrl) {
+      const row = new URLSearchParams();
+      ["Name", "Phone", "Date", "Time", "Guests", "Notes", "botcheck"].forEach((k) => row.append(k, data[k]));
+      fetch(CONFIG.sheetUrl, { method: "POST", mode: "no-cors", keepalive: true, body: row }).catch(() => {});
+    }
     const r = await fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
     const j = await r.json();
     if (!j.success) throw new Error(j.message || "failed");
