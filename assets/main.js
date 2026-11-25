@@ -1,7 +1,7 @@
 /* EDIT THESE. whatsapp = country code + number, digits only. Leave telegram, address or hours empty to hide them. */
 const CONFIG = {
   web3formsKey: "8d2ced08-2d99-4faf-b8d0-853262255d47", // Web3Forms form "Oxygen Lounge Reservations" -> oxygenloungezone@gmail.com
-  sheetUrl: "", // Google Apps Script web app URL (see google-sheet/Code.gs); empty = off
+  sheetUrl: "https://script.google.com/macros/s/AKfycbxWNZOyGRMMEj21yhWMJD2ZZBi9aJFIE7IRE9zukbzbuYUsSfpZm2N4HsmXCoFJZeES9g/exec", // Google Apps Script web app URL (see google-sheet/Code.gs); empty = off
   name: "Oxygen Lounge",
   whatsapp: "15137130707",
   phoneDisplay: "(513) 713-0707",
