@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Oxygen Lounge — Reserve a Table</title>
+<meta name="description" content="Oxygen Lounge: coffee, dessert and a calm room. Open daily 7 PM – 1 AM. Reserve your table online.">
+<meta property="og:title" content="Oxygen Lounge — Reserve a Table">
+<meta property="og:description" content="Coffee, dessert and a calm room. Open daily 7 PM – 1 AM.">
+<meta property="og:image" content="assets/logo.png">
+<meta name="theme-color" content="#122921">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-coffee" viewBox="0 0 48 48"><path d="M9 20h26v8a11 11 0 0 1-11 11h-4A11 11 0 0 1 9 28z"/><path d="M35 23h3a4 4 0 0 1 0 8h-4"/><path d="M6 44h32"/><path d="M17 6c-2 2 2 3 0 7M24 6c-2 2 2 3 0 7M31 6c-2 2 2 3 0 7"/></symbol>
+    <symbol id="i-dessert" viewBox="0 0 48 48"><path d="M5 23l36-10v26H5z"/><path d="M5 30c5 3 7-3 12 0s7-3 12 0 7-3 12 0"/><circle cx="36" cy="8" r="3"/></symbol>
+    <symbol id="i-relax" viewBox="0 0 48 48"><path d="M13 22v-8a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v8"/><path d="M13 22a4 4 0 0 0-7 3v6a4 4 0 0 0 4 4h28a4 4 0 0 0 4-4v-6a4 4 0 0 0-7-3"/><path d="M14 29h20v4H14z"/><path d="M12 37v5M36 37v5"/></symbol>
+    <symbol id="sprig" viewBox="0 0 40 40"><path d="M20 38V8"/><path d="M20 31C12 29 8 23 8 17c7 1 12 6 12 14z"/><path d="M20 24c8-2 12-8 12-14-7 1-12 6-12 14z"/><path d="M20 16c-5-1-8-5-8-9 5 1 8 4 8 9z"/></symbol>
+  </defs>
+</svg>
+
+<header class="band top-band">
+  <div class="wrap">
+    <div class="top">
+      <img class="logo" alt="Oxygen Lounge" width="760" height="174" src="assets/logo.png">
+      <div class="nav">
+        <span class="phone" id="phoneTop"></span>
+        <a class="pill" href="#reserve">Reserve</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="band hero">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <div>
+        <h1>Made for <em>good moments.</em></h1>
+        <p class="lede">Reserve your table ahead of time and arrive to a seat that is ready for you.</p>
+      </div>
+      <div class="trio" aria-label="What we offer">
+        <div><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg><span>Coffee</span></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#i-dessert"/></svg><span>Dessert</span></div>
+        <div><svg class="ico" aria-hidden="true"><use href="#i-relax"/></svg><span>Relax</span></div>
+      </div>
+    </div>
+
+    <div id="reserve">
+      <div class="card">
+        <p class="eyebrow" id="lastSeat">Reservations</p>
+        <h2>Book a table</h2>
+
+        <div id="formPanel">
+          <div class="sum" id="summary" aria-live="polite"></div>
+          <form id="bookForm" novalidate>
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="row2">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Full name" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 123-4567" required>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="date">Date</label>
+                <input id="date" name="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="time">Time</label>
+                <select id="time" name="time" required></select>
+              </div>
+            </div>
+            <div class="field">
+              <span class="lbl" id="guestsLbl">Guests</span>
+              <div class="stepper" role="group" aria-labelledby="guestsLbl">
+                <button type="button" id="minus" aria-label="One fewer guest">−</button>
+                <output id="guestsOut" for="minus plus">2</output>
+                <button type="button" id="plus" aria-label="One more guest">+</button>
+              </div>
+              <p class="hint" id="guestHint"></p>
+            </div>
+            <div class="field">
+              <label for="notes">Notes <span class="opt">(optional)</span></label>
+              <textarea id="notes" name="notes" placeholder="Birthday, high chair, allergies…"></textarea>
+            </div>
+            <p class="err" id="err" role="alert" hidden></p>
+            <button class="btn" type="submit" id="sendBtn">Request my table</button>
+          </form>
+        </div>
+
+        <div id="donePanel" hidden>
+          <div class="sum" id="summary2"></div>
+          <p class="ok"><strong>Request sent.</strong> Thank you! We will call or message you shortly to confirm your table.</p>
+          <div class="stack">
+            <a class="btn wa" id="waLink" href="#" target="_blank" rel="noopener">Also send on WhatsApp</a>
+            <button class="btn alt" type="button" id="editBtn">Make another request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="band sec alt-bg">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="orn"><svg aria-hidden="true"><use href="#sprig"/></svg></div>
+      <p class="eyebrow">The lounge</p>
+      <h2 class="big">Come for one thing,<br>stay for the rest.</h2>
+      <p class="sub">Open every evening from 7 PM until 1 AM. Coffee, dessert and a long dinner in a calm room. Take a seat and take your time.</p>
+    </div>
+    <div class="cols">
+      <article><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg><h3>Coffee</h3><p>Espresso drinks, tea and specialty coffee, made to order.</p></article>
+      <article><svg class="ico" aria-hidden="true"><use href="#i-dessert"/></svg><h3>Dessert</h3><p>Cakes and sweets baked to go with your cup.</p></article>
+      <article><svg class="ico" aria-hidden="true"><use href="#i-relax"/></svg><h3>Food &amp; relax</h3><p>Full meals in a calm room, made for conversation and long visits.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="orn"><svg aria-hidden="true"><use href="#sprig"/></svg></div>
+      <p class="eyebrow">Reserving</p>
+      <h2 class="big">How it works</h2>
+      <p class="sub">About a minute. No account and no app.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>Choose your time</h3><p>Pick the day, time and number of guests.</p></li>
+      <li><span class="n">2</span><h3>Send your request</h3><p>One tap sends your details straight to us.</p></li>
+      <li><span class="n">3</span><h3>Get your confirmation</h3><p>We reply to confirm your table.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band sec alt-bg center">
+  <div class="wrap">
+    <div class="orn"><svg aria-hidden="true"><use href="#sprig"/></svg></div>
+    <p class="eyebrow">Prefer to call?</p>
+    <div class="call-num" id="phoneDisp"></div>
+    <div class="actions">
+      <a class="pill" href="#reserve">Reserve online</a>
+      <button class="pill" type="button" id="copyPhone">Copy number</button>
+    </div>
+    <div class="info" id="infoRow" hidden>
+      <div id="hoursBox" hidden><h3>Hours</h3><dl id="hoursList"></dl></div>
+      <div id="addrBox" hidden><h3>Find us</h3><p id="addr" hidden></p><div class="actions"><a class="pill" id="mapLink" href="#" target="_blank" rel="noopener" hidden>Get directions</a><button class="pill" type="button" id="copyAddr" hidden>Copy address</button></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="band center">
+  <div class="wrap">
+    <div class="orn"><svg aria-hidden="true"><use href="#sprig"/></svg></div>
+    <div>Oxygen Lounge · Reservations are confirmed by message.</div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
